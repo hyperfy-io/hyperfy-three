@@ -12,6 +12,12 @@ class ImageLoader extends Loader {
 
 	load( url, onLoad, onProgress, onError ) {
 
+		// HACK: fixes Brave image optimization bug by ensuring
+		// image elements are actively referenced.
+		if (!window.observed) {
+			window.observed = new Set();
+		}
+
 		if ( this.path !== undefined ) url = this.path + url;
 
 		url = this.manager.resolveURL( url );
@@ -38,7 +44,13 @@ class ImageLoader extends Loader {
 
 		const image = createElementNS( 'img' );
 
+		// HACK
+		window.observed.add(image);
+
 		function onImageLoad() {
+
+			// HACK
+			window.observed.delete(image);
 
 			removeEventListeners();
 
@@ -51,6 +63,9 @@ class ImageLoader extends Loader {
 		}
 
 		function onImageError( event ) {
+
+			// HACK
+			window.observed.delete(image);
 
 			removeEventListeners();
 
