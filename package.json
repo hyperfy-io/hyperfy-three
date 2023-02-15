@@ -1,6 +1,6 @@
 {
-  "name": "three",
-  "version": "0.147.0",
+  "name": "hyperfy-three",
+  "version": "0.147.3",
   "description": "JavaScript 3D library",
   "type": "module",
   "main": "./build/three.js",
@@ -73,9 +73,9 @@
       "GPUBufferUsage": "readonly",
       "GPUTextureUsage": "readonly",
       "QUnit": "readonly",
-      "Ammo":"readonly",
-      "XRRigidTransform":"readonly",
-      "XRMediaBinding":"readonly"
+      "Ammo": "readonly",
+      "XRRigidTransform": "readonly",
+      "XRMediaBinding": "readonly"
     },
     "rules": {
       "no-throw-literal": [
